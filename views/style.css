@@ -1,0 +1,153 @@
+body {
+	background-color: #F8F8FF;
+	
+}
+header {
+	font-family: 'Marcellus SC', serif;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #1C1C1C;
+	padding: 1em;
+}
+#livrinho {
+	max-width: 5%;
+ 	max-height: 5%;
+    padding: 5px 5px 5px;
+}
+ul {
+	color: #1C1C1C;
+	width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #F8F8FF;
+}
+li {
+    float: left;
+}
+li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+}
+li a:hover:not(.active) {
+    background-color: #9370DB;
+	color: white;
+}
+.botao {
+	border-radius: 8px;
+	background-color: white;
+  	color: black;
+  	border: 2px solid #4B0082;
+  	cursor: pointer;
+    background: none;
+}
+.botao:hover {
+	background-color: white;
+    color: #4B0082;
+}
+#lista {
+	text-align: center;
+	align-items: center;
+} 
+/*necessário arrumar depois colocando as tags corretas
+"section" e etc*/
+th {
+	width: 5%;
+	align-items: center;
+	background-color: #4B0082;
+  	color: white;
+}
+td {
+	padding: 5px 5px 5px;
+}
+tr {
+	align-items: center;
+}
+tr:hover {
+	background-color: gray;
+}
+.active {
+    background-color: #9370DB;
+	color: white;
+}
+.form {
+	border: 1px solid black;
+	border-radius: 0.3em;
+	padding: 0.3em;
+	display: block;
+   	width: 50%;
+}
+form {
+	border: 1px solid whitesmoke;
+	border-radius: 0.3em;
+	padding: 0.3em;
+}
+form input, form button {
+    font-size: 1.2em;
+    border-radius: 0.2em;
+    border: none;
+    padding: 0.2em;
+}
+form button {
+    cursor: pointer;
+    background: none;
+    color: whitesmoke;
+}
+form button:hover {
+    background-color: white;
+    color: #9370DB;
+}
+#seumanga {
+	font-family: 'Marcellus SC', serif;
+	text-align: center;
+	font-size: 70px;
+}
+#quadrado {
+	justify-content: center;
+	display: inline-block;
+	width: 100%;
+}
+#manga {
+	align-items: center;
+	justify-content: space-around;
+	background-color: #E6E6FA;
+	display: inline-block;
+	width: 30%;
+	height: 100%;
+	padding: 5px;
+	margin-left: 1%;
+    margin-right: 1%;
+	margin-top: 4%;
+    margin-bottom: 4%;
+}
+.img {
+	max-width: 90%;
+ 	max-height: 90%;
+    padding: 5px 5px 5px;
+	height: 500px;
+	width: 400px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+h2, h3 {
+	text-align: justify;
+	color: black;
+	font-size: 20px;
+	font-family: Verdana;
+	margin-left: 3%;
+    margin-right: 3%;
+}
+footer {
+	bottom: 0;
+	position:  relative;
+	padding: 5px;
+    text-align: right;
+    background: #4B0082;
+	color: white;
+    clear: both;
+}

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Reservas</title>
+    <meta charset="UTF-8">
+    <link href="/style.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <%- include('nav.html'); %>
+    <section id="lista">
+      <h1>Lista de Reservas</h1>
+      <a  href="/">Voltar para a página inicial</a> &nbsp;
+      <a  href="/formReserva?idreserva=-1">Cadastrar uma nova reserva</a>
+      </br>
+      <table border="1" bordercolor="#4B0082" cellpadding="0" cellspacing="0">
+        <tr>
+          <th colspan="2"></th>
+          <th>Id. Reserva</th>
+	        <th>Id. Usuário</th>
+          <th>Nome do Usuário</th>
+          <th>E-mail do Usuário</th>
+    		  <th>Id. Mangá</th>
+          <th>Nome do Mangá</th>
+          <th>Dias de empréstimo</th>
+        </tr>
+      <% reservas.forEach((reserv, index) => { %> &nbsp;
+        <tr>
+          <td
+            ><a href="/formReserva?idreserva=<%= reserv.IDreserva %>">Atualizar</a></td>
+          <td>
+            <a href="/excluirReserva?idreserva=<%= reserv.IDreserva %>">Excluir</a></td>
+          <td><%= reserv.IDreserva %></td>
+          <td><%= reserv.idUSUARIO %></td>
+          <td><%= reserv.nomeU %></td>
+          <td><%= reserv.emailU %></td>
+          <td><%= reserv.IDmanga %></td>
+          <td><%= reserv.nomeM %></td>
+          <td><%= reserv.dias %></td>
+        </tr>       
+      <% }) %>
+    </table>
+  </section>
+  &nbsp;
+ <%- include('footer.html'); %>
+  </body>
+</html>

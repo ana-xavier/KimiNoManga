@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link href="/style.css" type="text/css" rel="stylesheet">
+    <script linguage="javascript">
+      function InfoValidar () {
+        var nome = document.getElementById("nome").value;
+        var categoria = document.getElementById("categoria").value;
+        var autor = document.getElementById("autor").value;
+
+        if(nome == '') {
+          alert('O campo "Nome" é obrigatório.');
+          return false; 
+        } if(nome.length > 45) {
+          alert('O campo "Nome" não pode ter mais de 45 caracteres');
+          return false;
+        }
+        
+        if(categoria == '') {
+          alert('O campo "Categoria" é obrigatório.');
+          return false; 
+        } if(categoria.length > 45) {
+          alert('O campo "Categoria" não pode ter mais de 45 caracteres');
+          return false;
+        }
+
+        if(autor == '') {
+          alert('O campo "Autor" é obrigatório.');
+          return false; 
+        } if(autor.length > 45) {
+          alert('O campo "Autor" não pode ter mais de 45 caracteres');
+          return false;
+        }
+          return true;
+      };
+    </script>
+  </head>
+  <body>
+    <%- include('nav.html'); %>
+    <center>
+      <h1>Cadastro de Mangas</h1>
+      <form action="/salvarManga" method="post" onsubmit="return InfoValidar()">
+
+        <input type="hidden" name="ID" id="ID" size="45" value="<%= (Mangas.length > 0 ? Mangas[0].IDmanga:-1)%>"><br>
+
+        <label for="nome">Nome:</label>
+        <input type="text" class="form" name="nome" id="nome" size="45" value="<%= (Mangas.length > 0 ? Mangas[0].NOME:"") %>" size="30"><br>
+
+        <label for="categoria">Categoria:</label>
+        <input type="text" class="form" name="categoria" id="categoria" size="45" value="<%= (Mangas.length > 0 ? Mangas[0].CATEGORIA:"") %>" size="30"><br>
+
+        <label for="autor">Autor:</label>
+        <input type="text" class="form" name="autor" id="autor" size="45" value="<%= (Mangas.length > 0 ? Mangas[0].AUTOR:"") %>" size="30"></br>
+
+      </br>
+        <input type="submit" class="botao" name="acao" value="Salvar">
+        <input type="submit" class="botao" name="acao" value="Cancelar">
+        <input type="reset" class="botao" value="Limpar">
+      </form>
+    </center>
+  <%- include('footer.html'); %>
+  </body>
+</html>

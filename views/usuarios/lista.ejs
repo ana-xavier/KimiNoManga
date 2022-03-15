@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Cadastro de Usuários</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <%- include('nav.html'); %>
+    <section id="lista">
+    <h1>Lista de Usuários</h1>
+    <a href="/">Voltar para página inicial</a> &nbsp;
+    <a href="/formUsuarios?id=-1">Inserir Novo Cadastro</a>
+  </br>
+    <table border="1" bordercolor="#4B0082" cellpadding="0" cellspacing="0">
+      <tr>
+        <th></th>
+        <th></th>
+	      <th>Id</th>
+        <th>Nome</th>
+        <th>Senha</th>
+		    <th>E-mail</th>
+        <th>Data de Nascimento</th>
+      </tr>
+      <% usuarios.forEach((cadUsu, index) => { %> &nbsp;
+      <tr>
+        <td>
+          <a href="/excluirDado?id=<%= cadUsu.idUSUARIO %>">Excluir</a></td> 
+        <td>
+          <a href="/formUsuarios?id=<%= cadUsu.idUSUARIO %>">Atualizar</a></td>
+
+			  <td><%= cadUsu.idUSUARIO %></td>
+        <td><%= cadUsu.nome %></td>
+        <td><%= cadUsu.senha %></td>
+        <td><%= cadUsu.email %></td>
+        <td><%= cadUsu.data_nasc %></td>
+      </tr>
+      <% }) %>
+    </table>
+  </section>
+  &nbsp;
+  <%- include('footer.html'); %>
+  </body>
+</html>

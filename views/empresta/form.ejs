@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <title>Empréstimos</title>
+    <link href="/style.css" type="text/css" rel="stylesheet">
+
+    <script language="javascript">
+      function IfValida(){
+        var nomeU = document.getElementById('nomeu').value;
+        var emailU = document.getElementById('emailu').value;
+        var nomeS = document.getElementById('nomem').value;
+        
+        if(nomeU == ''){
+          alert('O campo "Nome" é obrigatório.');
+          return false; 
+        } if(nomeU.length > 45) {
+          alert('O campo "Nome do Usuário" não pode ter mais de 45 caracteres');
+          return false;
+        }
+
+        if(emailU == ''){
+          alert('O campo "E-mail do Usuário" é obrigatório.');
+          return false;
+        }
+
+        if(nomeS == ''){
+          alert('O campo "Nome do Mangá solicitado para empréstimo" é obrigatório.');
+          return false; 
+        }
+          return true;
+      }
+    </script>
+
+  </head>
+  <body>
+    <%- include('nav.html'); %>
+    <center>
+      <h1>Cadastro de Empréstimos</h1>
+      <form action="/salvarEmpresta" method="post" onsubmit="return IfValida()">
+
+        <input type="hidden" name="idempresta" id="idempresta" size="45" value="<%= (Empresta.length > 0 ? Empresta[0].IDempresta:-1) %>"><br>
+
+        <label for="idU">Número de identificação do Usuário:</label>
+        <input type="number" class="form" name="idU" id="idU" size="45" value="<%= (Empresta.length > 0 ? Empresta[0].idUSUARIO:"") %>"><br>
+
+        <label for="nomeu">Nome do Usuário:</label>
+        <input type="text" class="form" name="nomeu" id="nomeu" size="45" value="<%= (Empresta.length > 0 ? Empresta[0].nomeUS:"") %>"><br>
+        
+        <label for="emailu">E-mail do Usuário:</label>
+        <input type="email" class="form" name="emailu" id="emailu" size="45" value="<%= (Empresta.length > 0 ? Empresta[0].emailUS:"") %>"></br>
+
+        <label for="idM">Número de Identificação do Mangá:</label>
+        <input type="number" class="form" name="idM" id="idM" size="45" value="<%= (Empresta.length > 0 ? Empresta[0].IDmanga:"") %>"><br>
+
+        <label for="nomem">Nome do Mangá solicitado para empréstimo:</label>
+        <input type="text" class="form" name="nomem" id="nomem" size="45" value="<%= (Empresta.length > 0 ? Empresta[0].nomeMA:"") %>"><br>
+
+        <label for="dataE">Data para empréstimo:</label>
+        <input type="date" class="form" name="dataE" id="dataE" size="45" value="<%= (Empresta.length > 0 ? Empresta[0].dataEmpresta:"") %>" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}"><br>
+
+        <label for="dataD">Data para devolução:</label>
+        <input type="date" class="form" name="dataD" id="dataD" size="45" value="<%= (Empresta.length > 0 ? Empresta[0].dataDevolve:"") %>" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}"><br>
+
+        <label for="estado">Estado da reserva:</label>
+        <select name="estado" id="estado"  class="form">
+        <option  class="form" size="45" value="">Selecione um estado</option>
+        <option  class="form" size="45" value="Reservado" <%= ((Empresta.length > 0 && Empresta[0].estado == "Reservado") ? "selected":"") %>>Reservado</option>
+        <option  class="form" size="45" value="Disponível" <%= ((Empresta.length > 0 && Empresta[0].estado == "Disponível") ? "selected":"") %>>Disponível</option>
+        <option  class="form" size="45" value="Indisponível" <%= ((Empresta.length > 0 && Empresta[0].estado == "Indispoível") ? "selected":"") %>>Indisponível</option>
+
+      </br>
+        <input type="submit" class="botao" name="acao" value="Salvar">
+        <input type="submit" class="botao" name="acao" value="Cancelar">
+        <input type="reset" class="botao" value="Limpar">
+      </form>
+    </center>
+  <%- include('footer.html'); %>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+﻿<html>
+  <head>
+    <title>MANGAS</title>
+    <meta charset="UTF-8">
+    <link href="/style.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <%- include('nav.html'); %>
+    <section id="lista">
+      <h1>Lista de Mangás</h1>
+      <a  href="/">Voltar para a página inicial</a> &nbsp;
+      <a  href="/formManga?IDmanga=-1">Inserir Novo Mangá</a>
+      </br>
+      <table border="1" bordercolor="#4B0082" cellpadding="0" cellspacing="0">
+        <tr>
+          <th colspan="2"></th>
+	        <th>Id</th>
+          <th>Nome</th>
+          <th>Categoria</th>
+    		  <th>Autor</th>
+        </tr>
+      <% Mangas.forEach((mang, index) => { %> &nbsp;
+        <tr>
+          <td
+            ><a href="/formManga?ID=<%= mang.IDmanga %>">Atualizar</a></td>
+          <td>
+            <a href="/excluirManga?ID=<%= mang.IDmanga %>">Excluir</a></td>
+          <td><%= mang.IDmanga %></td>
+          <td><%= mang.NOME %></td>
+          <td><%= mang.CATEGORIA %></td>
+          <td><%= mang.AUTOR %></td>
+        </tr>       
+      <% }) %>
+    </table>
+  </section>
+  &nbsp;
+ <%- include('footer.html'); %>
+  </body>
+</html>

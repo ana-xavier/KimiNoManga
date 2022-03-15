@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <title>Reservas</title>
+    <link href="/style.css" type="text/css" rel="stylesheet">
+
+    <script language="javascript">
+      function IfsValida(){
+        var nomeU = document.getElementById('nomeu').value;
+        var emailU = document.getElementById('emailu').value;
+        var nomeS = document.getElementById('nomem').value;
+        
+        if(nomeU == ''){
+          alert('O campo "Nome" é obrigatório.');
+          return false; 
+        } if(nomeU.length > 45) {
+          alert('O campo "Nome do Usuário" não pode ter mais de 45 caracteres');
+          return false;
+        }
+
+        if(emailU == ''){
+          alert('O campo "E-mail do Usuário" é obrigatório.');
+          return false;
+        }
+
+        if(nomeS == ''){
+          alert('O campo "Nome do Mangá solicitado para empréstimo" é obrigatório.');
+          return false; 
+        }
+          return true;
+      }
+    </script>
+
+  </head>
+  <body>
+    <%- include('nav.html'); %>
+    <center>
+      <h1>Cadastro de Reserva</h1>
+      <form action="/salvarReserva" method="post" onsubmit="return IfsValida()">
+
+        <input type="hidden" name="idReserva" id="idreserva" size="45" value="<%= (reservas.length > 0 ? reservas[0].IDreserva:-1) %>"><br>
+
+        <label for="idU">Número de identificação do Usuário:</label>
+        <input type="text" class="form" name="idU" id="idU" size="45" value="<%= (reservas.length > 0 ? reservas[0].idUSUARIO:"") %>"><br>
+
+        <label for="nomeu">Nome do Usuário:</label>
+        <input type="text" class="form" name="nomeu" id="nomeu" size="45" value="<%= (reservas.length > 0 ? reservas[0].nomeU:"") %>"><br>
+        
+        <label for="emailu">E-mail do Usuário:</label>
+        <input type="email" class="form" name="emailu" id="emailu" size="45" value="<%= (reservas.length > 0 ? reservas[0].emailU:"") %>"></br>
+
+        <label for="idM">Número de Identificação do Mangá:</label>
+        <input type="text" class="form" name="idM" id="idM" size="45" value="<%= (reservas.length > 0 ? reservas[0].IDmanga:"") %>"><br>
+
+        <label for="nomem">Nome do Mangá solicitado para empréstimo:</label>
+        <input type="text" class="form" name="nomem" id="nomem" size="45" value="<%= (reservas.length > 0 ? reservas[0].nomeM:"") %>"><br>
+
+        <label for="dias">Tempo de empréstimo</label>
+        <select name="dias" id="dias"  class="form">
+        <option type="number" class="form" size="45" value="">Selecione o tempo de empréstimo (em dias)</option>
+        <option type="number" class="form" size="45" value="20" <%= ((reservas.length > 0 && reservas[0].dias == "20") ? "selected":"") %>>20 dias</option>
+        <option type="number" class="form" size="45" value="30" <%= ((reservas.length > 0 && reservas[0].dias == "30") ? "selected":"") %>>30 dias</option>
+        <option type="number" class="form" size="45" value="60" <%= ((reservas.length > 0 && reservas[0].dias == "60") ? "selected":"") %>>60 dias</option>
+      </br>
+        <input type="submit" class="botao" name="acao" value="Salvar">
+        <input type="submit" class="botao" name="acao" value="Cancelar">
+        <input type="reset" class="botao" value="Limpar">
+      </form>
+    </center>
+  <%- include('footer.html'); %>
+  </body>
+</html>
